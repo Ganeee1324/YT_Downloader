@@ -1,0 +1,46 @@
+!pip install yt-dlp 
+
+import os
+from yt_dlp import YoutubeDL
+
+def download_video_as_mp4(youtube_url):
+    try:
+        # For Colab, we'll use a default directory or let users input a path
+        output_folder = "/content/downloads"  # Default Colab directory
+        
+        # Create directory if it doesn't exist
+        os.makedirs(output_folder, exist_ok=True)
+        
+        # Download options
+        ydl_opts = {
+            'outtmpl': os.path.join(output_folder, '%(title)s.%(ext)s'),
+            'format': 'bestvideo+bestaudio/best',
+            'merge_output_format': 'mp4',
+            'postprocessors': [{
+                'key': 'FFmpegVideoConvertor',
+                'preferedformat': 'mp4',
+            }]
+        }
+        
+        # Download the video
+        with YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(youtube_url, download=True)
+            filename = ydl.prepare_filename(info_dict)
+            
+        print("\nDownload complete!")
+        print(f"Video saved to: {filename}")
+        
+        # For Colab users: Show download link
+        from IPython.display import FileLink
+        return FileLink(filename)
+    
+    except Exception as e:
+        print(f"Download error: {e}")
+
+# Execution
+if __name__ == "__main__":
+    video_url = input("YouTube URL: ")
+    download_link = download_video_as_mp4(video_url)
+    # If running in Colab notebook, this will create a download link
+    if download_link:
+        display(download_link)
