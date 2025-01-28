@@ -1,40 +1,26 @@
-import os
+import sys
 from yt_dlp import YoutubeDL
-from tkinter import Tk
-from tkinter.filedialog import askdirectory
 
-def download_video_as_mp4(youtube_url):
+def download_video_as_mp4(youtube_url, output_file):
+    """Download video and save it as the specified output file."""
     try:
-        # Create a dialog box to select output folder
-        print("Please select the folder where you want to save the video.")
-        root = Tk()
-        root.withdraw()  # Hide the root window
-        output_folder = askdirectory(title="Select Output Folder")
-        
-        if not output_folder:
-            raise ValueError("No folder selected. Download canceled.")
-        
-        # Download options to force mp4 format
         ydl_opts = {
-            'outtmpl': os.path.join(output_folder, '%(title)s.%(ext)s'),
             'format': 'bestvideo+bestaudio/best',
-            'merge_output_format': 'mp4',  # Ensure output is in mp4 format
-            'postprocessors': [{
-                'key': 'FFmpegVideoConvertor',
-                'preferedformat': 'mp4',  # Convert to mp4 if needed
-            }]
+            'outtmpl': output_file,  # Specify the output file name
+            'merge_output_format': 'mp4',
         }
-        
-        # Download the video
         with YoutubeDL(ydl_opts) as ydl:
             ydl.download([youtube_url])
-        print("Download complete.")
-        print(f"Video saved to: {output_folder}")
-    
+        print(f"Download complete. File saved as: {output_file}")
     except Exception as e:
         print(f"Download error: {e}")
 
-# Execution
+
 if __name__ == "__main__":
-    video_url = input("YouTube URL: ")
-    download_video_as_mp4(video_url)
+    if len(sys.argv) < 3:
+        print("Usage: python YT_DL.py <YouTube URL> <Output File>")
+        sys.exit(1)
+
+    youtube_url = sys.argv[1]
+    output_file = sys.argv[2]
+    download_video_as_mp4(youtube_url, output_file)

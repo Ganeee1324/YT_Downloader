@@ -1,13 +1,25 @@
-If you have Python and VS Code:
-File: YT_DL.py
+# Set-Up
 
-Requirements: pip install yt-dlp tk
+**MacOS:**
 
-- Run the file 
+This assumes Python and Homebrew have already been installed to your local machine. 
 
-- A Python window will pop-up asking for the output folder, choose it.
+```sh
+pip install yt-dlp tk
+brew install ffmpeg
+```
 
-- paste the link 
+# Quickstart
+
+- Run the file with: 
+  
+```sh
+python run_process.py
+```
+
+- A window will pop-up asking for where the output video destination should be.
+
+- Paste the desired YouTube link.
 
 You're done!
 
