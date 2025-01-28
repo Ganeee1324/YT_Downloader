@@ -2,6 +2,12 @@
 
 Downloads your favorite YouTube videos to your device!
 
+If you have Python and VS Code:
+
+File: YT_DL.py
+
+Downloads your favorite YouTube videos to your device!
+
 ## Set-Up
 
 **MacOS:**
@@ -28,6 +34,7 @@ python run_process.py
 You're done!
 
 If you don't have Python and VS Code:
+
 File: Colab
 
 
