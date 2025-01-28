@@ -2,11 +2,7 @@ If you have Python and VS Code:
 
 File: YT_DL.py
 
-Requirements: 
-
-pip install yt-dlp tk
-
-brew install ffmpeg
+Requirements: pip install yt-dlp tk
 
 - Run the file 
 
