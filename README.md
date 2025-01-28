@@ -1,4 +1,8 @@
-# Set-Up
+# YT_Downloader
+
+Downloads your favorite YouTube videos to your device!
+
+## Set-Up
 
 **MacOS:**
 
@@ -9,7 +13,7 @@ pip install yt-dlp tk
 brew install ffmpeg
 ```
 
-# Quickstart
+## Quickstart
 
 - Run the file with: 
   
