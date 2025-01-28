@@ -37,6 +37,7 @@ If you don't have Python and VS Code:
 
 File: Colab
 
+Tutorial: https://youtu.be/2PFU7eREOJI
 
 - Just go to https://colab.research.google.com
 - Paste the code
